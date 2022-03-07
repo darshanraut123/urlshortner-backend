@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
-const port = process.env.port || 4000;
+const port = process.env.PORT || 4000;
 const cors = require("cors");
 
 app.use(express.static(path.join(__dirname, "public")));
