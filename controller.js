@@ -55,7 +55,7 @@ exports.signup = async (req, res) => {
     const verificationToken = user.generateVerificationToken();
 
     // Step 3 - Email the user a unique verification link
-    const url = `http://localhost:3000/api/verify/${verificationToken}`;
+    const url = `https://url-shortner-app-in.herokuapp.com/api/verify/${verificationToken}`;
     transporter.sendMail({
       to: email,
       subject: "Verify Account",
@@ -81,8 +81,8 @@ exports.login = async (req, res) => {
     // Step 1 - Verify a user with the email exists
     const user = await User.findOne({ email }).exec();
     if (!user) {
-      return res.status(205).send({
-        message: "User does not exists",
+      return res.status(208).send({
+        message: "User/Email does not exists!"
       });
     }
 
@@ -97,7 +97,7 @@ exports.login = async (req, res) => {
     //If password matched then login
     const isPasswordMatched = await comparePassword(password, user.password);
     if (!isPasswordMatched) {
-      return res.status(204).send({ message: "wrong password" });
+      return res.status(207).send({ message: "Wrong password choice!" });
     }
 
     //In case of success generate token
