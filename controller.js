@@ -229,3 +229,8 @@ exports.authenticate = async function (req, res) {
   if (token && validateToken(token)) res.status(200).send("Success");
   else res.status(401).send("Unauthorised access");
 };
+
+
+exports.appRunning = async function(req,res){
+  res.send("App is running!!!")
+}

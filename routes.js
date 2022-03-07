@@ -9,4 +9,5 @@ router.get("/verify/:token", UserController.verify);
 router.post("/forgotPassword", UserController.forgotPassword);
 router.post("/addUrl", authenticateToken, UserController.addUrl);
 router.get("/getUrl/:short", authenticateToken, UserController.getUrl);
+router.get("/",UserController.appRunning);
 module.exports = router;
