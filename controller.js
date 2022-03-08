@@ -55,7 +55,7 @@ exports.signup = async (req, res) => {
     const verificationToken = user.generateVerificationToken();
 
     // Step 3 - Email the user a unique verification link
-    const url = `https://url-shortner-app-in.herokuapp.com/api/verify/${verificationToken}`;
+    const url = `https://url-shortner-app-frontend.herokuapp.com/emailverify/${verificationToken}`;
     transporter.sendMail({
       to: email,
       subject: "Verify Account",
@@ -112,9 +112,10 @@ exports.login = async (req, res) => {
 };
 
 exports.verify = async (req, res) => {
-  const { token } = req.params; // Check we have an token
+  const { token } = req.params; 
+  // Check we have an token
   if (!token) {
-    return res.status(422).send({
+    return res.status(203).send({
       message: "Missing Token",
     });
   }
@@ -131,7 +132,7 @@ exports.verify = async (req, res) => {
 
     const user = await User.findOne({ _id: payload.ID }).exec();
     if (!user) {
-      return res.status(404).send({
+      return res.status(204).send({
         message: "User does not  exists",
       });
     }
