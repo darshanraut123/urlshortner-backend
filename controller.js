@@ -62,7 +62,7 @@ exports.signup = async (req, res) => {
       html: `Click <a href = '${url}'>here</a> to confirm your email!`,
     });
     return res.status(200).send({
-      message: `Sent a verification email to ${email}! In case if you dont find the mail please check span folder too`,
+      message: `Sent a verification email to ${email}! In case if you dont find the mail please check spam/junk folder too`,
     });
   } catch (err) {
     console.log(err);
